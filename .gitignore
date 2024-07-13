@@ -58,7 +58,7 @@ fabric.properties
 ### Vuejs template
 # Recommended template: Node.gitignore
 
-node_modules/
+abc-task/node_modules/
 dist/
 npm-debug.log
 yarn-error.log

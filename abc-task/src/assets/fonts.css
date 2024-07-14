@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Merriweather';
+  src: url('./fonts/Merriweather-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('./fonts/PT_Serif-Web-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'YesevaOne';
+  src: url('./fonts/YesevaOne-Regular.ttf') format('ttf');
+}

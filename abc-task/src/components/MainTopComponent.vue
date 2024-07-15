@@ -29,7 +29,7 @@ import bottomQuote from '@/assets/svg/bottom-quote.svg';
               rgba(39, 98, 187, 0) 85%),
               url('../assets/webp/bg_middle.webp') no-repeat;
 }
-/*url('../assets/webp/bg_middle.webp') no-repeat;*/
+
 .main__top__wrapper {
   display: flex;
   flex-direction: column;

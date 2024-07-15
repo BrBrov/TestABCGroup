@@ -6,11 +6,18 @@ import FooterComponent from '@/components/FooterComponent.vue';
 </script>
 
 <template>
-  <HeaderComponent/>
-  <MainComponent/>
-  <FooterComponent/>
+  <div class="wrapper">
+    <HeaderComponent />
+    <MainComponent />
+    <FooterComponent />
+  </div>
 </template>
 
 <style scoped>
-
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+}
 </style>

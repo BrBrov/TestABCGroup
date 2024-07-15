@@ -38,10 +38,12 @@ import logoLicense from '@/assets/svg/license.svg';
   box-sizing: border-box;
   padding: 56px 12px 13px;
   flex-direction: column;
-  background: url('../assets/webp/bg_bottom.webp') no-repeat;
+  align-items: center;
+  background: url('../assets/webp/bg_bottom.webp') top/cover no-repeat;
 }
 
 .footer__text {
+  width: 303px;
   margin: 0;
   font-family: var(--font-merriweather), sans-serif;
   font-weight: 400;
@@ -81,7 +83,6 @@ import logoLicense from '@/assets/svg/license.svg';
 }
 
 .footer__button {
-  align-self: center;
   width: 200px;
   height: 44px;
   background: unset;

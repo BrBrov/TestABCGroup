@@ -36,7 +36,7 @@ import arrow from '@/assets/svg/arrow-up.svg';
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: url('../assets/webp/bg_top.webp') top/347px 647px no-repeat;
+  background: url('../assets/webp/bg_top.webp') 0 0/106% auto no-repeat;
 }
 
 .header__top-wrapper {

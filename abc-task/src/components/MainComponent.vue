@@ -15,7 +15,7 @@ import MainBottomComponent from '@/components/MainBottomComponent.vue';
 .main {
   display: flex;
   min-width: 320px;
-  height: 848px;
+  height: 886px;
   flex-direction: column;
   justify-content: flex-start;
 }

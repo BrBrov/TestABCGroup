@@ -3,10 +3,15 @@ const props = defineProps({
   text: String,
   isDisabled: Boolean
 });
+const btnEmit = defineEmits(['button-click']);
+
+function buttonClick() {
+  btnEmit('button-click');
+}
 </script>
 
 <template>
-  <button class="header__btn" :disabled="isDisabled">
+  <button class="header__btn" :disabled="isDisabled" @click="buttonClick">
     <span class="header__btn-text">{{ props.text }}</span>
   </button>
 </template>

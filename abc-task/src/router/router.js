@@ -14,6 +14,13 @@ const router = createRouter({
       name: 'quiz',
       component: () => import('../views/QuizPageView.vue')
     }
+    ,
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: () => {
+        return {path: '/'};
+      }
+    }
   ]
 });
 

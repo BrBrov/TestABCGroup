@@ -1,6 +1,13 @@
 <script setup>
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import logoBrain from '@/assets/webp/brain_color.webp';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function buttonClick() {
+  router.push('/quiz?test=1');
+}
 </script>
 
 <template>
@@ -16,7 +23,7 @@ import logoBrain from '@/assets/webp/brain_color.webp';
       финансовый результат.<br>
     </h2>
     <img class="main__bottom-img" :src="logoBrain" alt="Brain banner">
-    <ButtonComponent text="Пойти тест" :isDisabled="false"/>
+    <ButtonComponent text="Пойти тест" :isDisabled="false" @button-click="buttonClick"/>
   </section>
 </template>
 

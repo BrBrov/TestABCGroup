@@ -1,6 +1,13 @@
 <script setup>
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import arrow from '@/assets/svg/arrow-up.svg';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function buttonClick() {
+  router.push('/quiz?test=1');
+}
 
 </script>
 
@@ -11,7 +18,7 @@ import arrow from '@/assets/svg/arrow-up.svg';
     <h1 class="header__text-title">Tecт на определение IQ</h1>
   </div>
   <div class="header__bottom-wrapper">
-    <ButtonComponent text = 'Пройти тест' :isDisabled = "false"/>
+    <ButtonComponent text = 'Пройти тест' :isDisabled = "false" @button-click="buttonClick"/>
     <div class="header__text-bottom">
       <span class="header__text-yellow">И получите рекомендации по развитию своего интеллекта</span>
       <span class="header__text-white">и улучшению финансового благосостояния и личной жизни</span>

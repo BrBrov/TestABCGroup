@@ -1,16 +1,80 @@
 <script setup>
+import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
+import { ref } from 'vue';
+import TextQuestComponent from '@/components/TextQuestComponent.vue';
+import ButtonComponent from '@/components/ButtonComponent.vue';
+
+const maxTest = ref(11);
+const currentTest = ref(1);
+const isButtonEnabled = ref(false);
 
 </script>
 
 <template>
   <div class="wrapper">
-
+    <header class="header">
+      <HeaderMenuComponent/>
+    </header>
+    <main class="main">
+      <progress class="main__progress" :max="maxTest" :value="currentTest"></progress>
+      <TextQuestComponent/>
+    </main>
+    <footer class="footer">
+      <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled'/>
+    </footer>
   </div>
+
 </template>
 
 <style scoped>
 .wrapper {
   min-width: 320px;
+  height: 100vh;
+  min-height: 568px;
   margin: 0 auto;
+  background: url('../assets/webp/bg_quiz.webp') center/cover no-repeat;
+}
+
+.header {
+  width: 100%;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #181818;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  height: 431px;
+  box-sizing: border-box;
+  padding: 17px 0 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.main__progress {
+  display: block;
+  width: 260px;
+  height: 11px;
+  background: #f2f3f3;
+  border-radius: 10px;
+  opacity: 0.99;
+}
+
+.main__progress::-webkit-progress-bar,
+.main__progress::-webkit-progress-inner-element {
+  border-radius: 10px;
+}
+
+.main__progress::-webkit-progress-value {
+  border-radius: 10px;
+  background: #3bde7c;
+}
+
+.footer {
+  display: flex;
+  height: 90px;
+  justify-content: center;
+  align-items: center;
 }
 </style>

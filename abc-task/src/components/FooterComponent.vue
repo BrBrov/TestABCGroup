@@ -1,6 +1,12 @@
 <script setup>
 import logoLicense from '@/assets/svg/license.svg';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+function buttonClick() {
+  router.push('/quiz?test=1');
+}
 </script>
 
 <template>
@@ -20,7 +26,7 @@ import logoLicense from '@/assets/svg/license.svg';
     аспекты своей жизни</strong>: от<br>
     финансового до любовного.
   </aside>
-  <button class="footer__button">
+  <button class="footer__button" @click="buttonClick">
     <span class="footer__btn-text">Пойти</span>
   </button>
   <div class="footer__made">

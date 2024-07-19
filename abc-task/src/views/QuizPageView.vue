@@ -13,12 +13,16 @@ const { push } = useRouter();
 const state = testingState();
 const tests = testsStore();
 
-
 const currentTestNumber = computed(() => state.getStep());
 const maxTest = computed(() => tests.getNumberOfTests(state.getStep()));
 const isButtonEnabled = computed(() => {
   return !state.getCurrentAnswer();
 });
+
+function nextTask() {
+  state.incrementStep();
+  push(path + `?test=${currentTestNumber.value}`);
+}
 
 onMounted(() => {
   if (!query.test) {
@@ -47,7 +51,7 @@ onMounted(() => {
       <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'"/>
     </main>
     <footer class="footer">
-      <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled'/>
+      <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled' @click="nextTask"/>
     </footer>
   </div>
 

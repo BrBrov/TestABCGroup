@@ -49,7 +49,7 @@ function buttonClick() {
 }
 
 .footer__text {
-  width: 303px;
+  width: 295px;
   margin: 0;
   font-family: var(--font-merriweather), sans-serif;
   font-weight: 400;
@@ -70,7 +70,7 @@ function buttonClick() {
 
 .footer__description {
   box-sizing: border-box;
-  width: 303px;
+  width: 295px;
   height: 216px;
   margin: 28px auto 33px;
   padding: 29px 15px 31px;

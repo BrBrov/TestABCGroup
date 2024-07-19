@@ -15,7 +15,7 @@ const state = testingState();
 const tests = testsStore();
 
 const currentTestNumber = computed(() => state.getStep());
-const maxTest = computed(() => tests.getNumberOfTests(state.getStep()));
+const maxTest = computed(() => tests.getNumberOfTests());
 const isButtonEnabled = computed(() => {
   return !state.getCurrentAnswer();
 });

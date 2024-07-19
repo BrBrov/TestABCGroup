@@ -34,7 +34,7 @@ export const testsStore = defineStore('tests', () => {
     {
       id: 5,
       type: 'colored',
-      description: 'Выберите цвет, который\n' + 'сейчас наиболее Вам\n' + 'приятен:',
+      description: 'Выберите цвет, который\n' + 'сейчас наиболее вам\n' + 'приятен:',
       url: '',
       answers: ['#a8a8a8', '#0000a9',  '#00a701', '#f60100', '#fdff19', '#a95403', '#000000', '#850068', '#46b2ac']
     },
@@ -89,7 +89,7 @@ export const testsStore = defineStore('tests', () => {
   ]);
 
   function getTest(step) {
-    return step <= 0 ? tests.value[0] : tests.value[`${step - 1}`];
+    return step <= 0 ? tests.value[0] : tests.value[step];
   }
 
   function getNumberOfTests() {

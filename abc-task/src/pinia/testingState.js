@@ -18,7 +18,7 @@ export const testingState = defineStore('processing',
   }
 
   function addAnswer(answer) {
-    processing.value.answers[processing.value.step - 1] = answer;
+    processing.value.answers[processing.value.step] = answer;
   }
 
   function getAnswers(){
@@ -27,7 +27,7 @@ export const testingState = defineStore('processing',
 
   function getCurrentAnswer() {
     if(processing.value.answers.length === 0) return '';
-    return processing.value.answers[processing.value.step - 1];
+    return processing.value.answers[processing.value.step];
   }
 
   function getStep() {

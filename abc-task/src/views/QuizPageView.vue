@@ -1,11 +1,12 @@
 <script setup>
 import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
-import { computed, onMounted } from 'vue';
+import ColoredQuestComponent from '@/components/ColoredQuestComponent.vue';
 import TextQuestComponent from '@/components/TextQuestComponent.vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import { useRoute, useRouter } from 'vue-router';
+import { computed, onMounted } from 'vue';
 
 const { query, path } = useRoute();
 const { push } = useRouter();
@@ -21,21 +22,24 @@ const isButtonEnabled = computed(() => {
 
 function nextTask() {
   state.incrementStep();
-  push(path + `?test=${currentTestNumber.value}`);
+  push(path + `?test=${currentTestNumber.value + 1}`);
 }
 
 onMounted(() => {
   if (!query.test) {
     state.resetQuiz();
-    return push(`/quiz?test=${state.getStep()}`);
+    return push(`/quiz?test=${state.getStep() + 1}`);
   }
 
   const step = parseInt(query.test);
 
-  if (!step || state.getStep() !== query.test) {
-    if (state.getStep() === 0) state.incrementStep();
+  if(!step) {
+    state.resetQuiz();
+    return push('/');
+  }
 
-    return push(path + `?test=${state.getStep()}`);
+  if (state.getStep() + 1 !== query.test) {
+    return push(path + `?test=${state.getStep() + 1}`);
   }
 });
 
@@ -47,8 +51,9 @@ onMounted(() => {
       <HeaderMenuComponent/>
     </header>
     <main class="main">
-      <progress class="main__progress" :max="maxTest" :value="currentTestNumber"></progress>
+      <progress class="main__progress" :max="maxTest" :value="currentTestNumber + 1"></progress>
       <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'"/>
+      <ColoredQuestComponent v-if="tests.getTest(currentTestNumber).type === 'colored'"/>
     </main>
     <footer class="footer">
       <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled' @click="nextTask"/>

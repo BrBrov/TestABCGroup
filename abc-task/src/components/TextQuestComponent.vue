@@ -35,7 +35,6 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   text-align: center;
   color: #fff;
 }

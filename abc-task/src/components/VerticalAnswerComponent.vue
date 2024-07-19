@@ -19,10 +19,16 @@ const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
 const currentAnswer = computed(() => state.getCurrentAnswer());
+const answerHeight = computed(() => {
+  const answers = tests.getTest(state.getStep()).answers;
+  if(answers.length > 5) return '40px';
 
-function setAnswer(event) {
-  const value = !event.target.value ? event.target.outerText : event.target.value;
+  return '50px';
+});
 
+function setAnswer({target}) {
+  const value = target.dataset.answer;
+  console.log(value);
   state.addAnswer(value);
 }
 
@@ -33,13 +39,14 @@ function setAnswer(event) {
     <li :class="currentAnswer === answer ? classForWrapper.checked : classForWrapper.unchecked"
         v-for="(answer, index) in currentTest.answers"
         :key="answer"
+        :data-answer="answer"
         @click="setAnswer">
       <div class="answer__checkbox-wrapper">
         <label class="answer__checkbox" :for="'answer__check-' + index">
           <input :id="'answer__check-' + index"
                  class="answer__check-class"
                  type="checkbox"
-                 :value="answer"
+                 :data-answer="answer"
                  :checked="currentAnswer === answer">
           <span class="answer__mark"></span>
         </label>
@@ -62,11 +69,12 @@ function setAnswer(event) {
 }
 
 .answer__wrapper {
+  flex-shrink: 1;
   position: relative;
   z-index: 1;
   display: flex;
   width: 320px;
-  height: 50px;
+  height: v-bind(answerHeight);
   justify-content: flex-start;
   align-items: center;
   gap: 39px;
@@ -76,7 +84,7 @@ function setAnswer(event) {
   position: absolute;
   z-index: 0;
   width: 320px;
-  height: 50px;
+  height: v-bind(answerHeight);
   content: '';
   background: #ffffff;
   opacity: 0.15;
@@ -87,7 +95,7 @@ function setAnswer(event) {
   z-index: 1;
   display: flex;
   width: 320px;
-  height: 50px;
+  height: v-bind(answerHeight);
   justify-content: flex-start;
   align-items: center;
   gap: 39px;

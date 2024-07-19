@@ -8,27 +8,32 @@ export const testingState = defineStore('processing',
     answers: []
   });
 
-  const incrementStep = function () {
+  function incrementStep() {
     processing.value.step++;
   }
 
-  const resetQuiz = function () {
+  function resetQuiz() {
     processing.value.step = 0;
     processing.value.answers = [];
-  };
-
-  const addAnswer = function (answer) {
-    processing.value.answers.push(answer);
   }
 
-  const getAnswers = function (){
+  function addAnswer(answer) {
+    processing.value.answers[processing.value.step - 1] = answer;
+  }
+
+  function getAnswers(){
      return processing.value.answers;
-  };
+  }
 
-  const getStep = function () {
+  function getCurrentAnswer() {
+    if(processing.value.answers.length === 0) return '';
+    return processing.value.answers[processing.value.step - 1];
+  }
+
+  function getStep() {
     return processing.value.step;
-  };
+  }
 
-  return {processing, incrementStep, resetQuiz, addAnswer, getAnswers, getStep};
+  return {processing, incrementStep, resetQuiz, addAnswer, getAnswers, getCurrentAnswer, getStep};
   }
 );

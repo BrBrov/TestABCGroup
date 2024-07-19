@@ -1,12 +1,39 @@
 <script setup>
 import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
-import { ref } from 'vue';
+import { computed, onMounted } from 'vue';
 import TextQuestComponent from '@/components/TextQuestComponent.vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
+import { testingState } from '@/pinia/testingState.js';
+import { testsStore } from '@/pinia/testsStore.js';
+import { useRoute, useRouter } from 'vue-router';
 
-const maxTest = ref(11);
-const currentTest = ref(1);
-const isButtonEnabled = ref(false);
+const { query, path } = useRoute();
+const { push } = useRouter();
+
+const state = testingState();
+const tests = testsStore();
+
+
+const currentTestNumber = computed(() => state.getStep());
+const maxTest = computed(() => tests.getNumberOfTests(state.getStep()));
+const isButtonEnabled = computed(() => {
+  return !state.getCurrentAnswer();
+});
+
+onMounted(() => {
+  if (!query.test) {
+    state.resetQuiz();
+    return push(`/quiz?test=${state.getStep()}`);
+  }
+
+  const step = parseInt(query.test);
+
+  if (!step || state.getStep() !== query.test) {
+    if (state.getStep() === 0) state.incrementStep();
+
+    return push(path + `?test=${state.getStep()}`);
+  }
+});
 
 </script>
 
@@ -16,8 +43,8 @@ const isButtonEnabled = ref(false);
       <HeaderMenuComponent/>
     </header>
     <main class="main">
-      <progress class="main__progress" :max="maxTest" :value="currentTest"></progress>
-      <TextQuestComponent/>
+      <progress class="main__progress" :max="maxTest" :value="currentTestNumber"></progress>
+      <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'"/>
     </main>
     <footer class="footer">
       <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled'/>

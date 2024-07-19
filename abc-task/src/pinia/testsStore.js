@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const testsStore = defineStore('tests', () => {
@@ -88,7 +88,13 @@ export const testsStore = defineStore('tests', () => {
     }
   ]);
 
-  const getTest = (num) => num <= 0 ? tests.value[0] : tests.value[`${num - 1}`];
+  function getTest(step) {
+    return step <= 0 ? tests.value[0] : tests.value[`${step - 1}`];
+  }
 
-  return { tests, getTest };
+  function getNumberOfTests() {
+    return tests.value.length;
+  }
+
+  return { tests, getTest, getNumberOfTests };
 });

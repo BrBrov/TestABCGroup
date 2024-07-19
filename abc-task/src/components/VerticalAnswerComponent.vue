@@ -1,39 +1,53 @@
 <script setup>
-import { computed, ref } from 'vue';
 
-const answerUser = ref('');
+import { testingState } from '@/pinia/testingState.js';
+import { testsStore } from '@/pinia/testsStore.js';
+import { computed } from 'vue';
 
-const { test, nameChecked } = defineProps({
-  test: Array,
-  nameChecked: String
-});
+const classForWrapper = {
+  checked: 'answer__wrapper-checked',
+  unchecked: 'answer__wrapper'
+};
 
-computed(() => answerUser.value = nameChecked);
+const classForTextColor = {
+  checked: 'answer__description-checked',
+  unchecked: 'answer__description'
+};
 
-const emit = defineEmits(['check-answer']);
+const state = testingState();
+const tests = testsStore();
 
-function checkAnswer(event) {
-  answerUser.value = event.target.value;
-  emit('check-answer', event.target.value);
+const currentTest = computed(() => tests.getTest(state.getStep()));
+const currentAnswer = computed(() => state.getCurrentAnswer());
+
+function setAnswer(event) {
+  const value = !event.target.value ? event.target.outerText : event.target.value;
+
+  state.addAnswer(value);
 }
 
 </script>
 
 <template>
   <ul class="answer">
-    <li class="answer__wrapper" v-for="(answer, index) in test" :key="answer">
+    <li :class="currentAnswer === answer ? classForWrapper.checked : classForWrapper.unchecked"
+        v-for="(answer, index) in currentTest.answers"
+        :key="answer"
+        @click="setAnswer">
       <div class="answer__checkbox-wrapper">
         <label class="answer__checkbox" :for="'answer__check-' + index">
           <input :id="'answer__check-' + index"
                  class="answer__check-class"
                  type="checkbox"
                  :value="answer"
-                 :checked="nameChecked === answer"
-                 @click="(e) => checkAnswer(e)">
+                 :checked="currentAnswer === answer">
           <span class="answer__mark"></span>
         </label>
       </div>
-      <div class="answer__description">{{answer}}</div>
+      <div :class="currentAnswer === answer ? classForTextColor.checked : classForTextColor.unchecked"
+           :key="answer">
+        {{answer}}
+      </div>
     </li>
   </ul>
 </template>
@@ -68,6 +82,18 @@ function checkAnswer(event) {
   opacity: 0.15;
 }
 
+.answer__wrapper-checked {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 320px;
+  height: 50px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 39px;
+  background: #ffc700;
+}
+
 .answer__checkbox-wrapper {
   width: 20px;
   height: 20px;
@@ -91,7 +117,8 @@ function checkAnswer(event) {
 }
 
 .answer__check-class:checked ~ .answer__mark {
-  background: #cccccc;
+  background: #2950c2;
+  border: 1px solid #272727;
 }
 
 .answer__description {
@@ -102,6 +129,16 @@ function checkAnswer(event) {
   letter-spacing: 0.05em;
   text-transform: capitalize;
   color: #ffffff;
+}
+
+.answer__description-checked {
+  font-family: var(--font-pt-serif), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 322%;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  color: #272727;
 }
 
 </style>

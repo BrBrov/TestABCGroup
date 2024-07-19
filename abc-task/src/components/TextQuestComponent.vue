@@ -2,53 +2,21 @@
 import VerticalAnswerComponent from '@/components/VerticalAnswerComponent.vue';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
-import { useRoute, useRouter } from 'vue-router';
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 
 const state = testingState();
 const tests = testsStore();
 
-const { query, path } = useRoute();
-const { push } = useRouter();
-
-const checkedTest = ref('');
-const val = computed(() => {
-  if (state.getStep() === 0) state.incrementStep();
-  return tests.getTest(state.getStep());
-});
-
-function setAnswers (answer) {
-  checkedTest.value = answer;
-}
-
-onMounted(() => {
-  if (!query.test) {
-    state.resetQuiz();
-    return push(`/quiz?test=${state.getStep()}`);
-  }
-
-  const step = parseInt(query.test);
-
-  if (!step || state.getStep() !== query.test) {
-    if (state.getStep() === 0) state.incrementStep();
-
-    return push(path + `?test=${state.getStep()}`);
-  }
-});
+const currentTest = computed(() => tests.getTest(state.getStep()));
 
 </script>
 
 <template>
   <div class="test">
       <h3 class="test__description">
-        {{val.description}}
+        {{currentTest.description}}
       </h3>
-      <VerticalAnswerComponent
-        :v-if="val.type === 'text'"
-        :test="val.answers"
-        :nameChecked="checkedTest"
-        @check-answer="setAnswers"
-      />
+      <VerticalAnswerComponent/>
   </div>
 </template>
 

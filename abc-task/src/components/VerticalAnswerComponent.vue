@@ -65,6 +65,7 @@ function setAnswer({target}) {
 .answer {
   display: flex;
   padding: 0;
+  margin: 0;
   flex-direction: column;
   list-style: unset;
   gap: 8px;

@@ -22,8 +22,12 @@ const isButtonEnabled = computed(() => {
 });
 
 function nextTask() {
+  if(maxTest.value === state.getAnswers().length) {
+    return push('/calculate');
+  }
+
   state.incrementStep();
-  push(path + `?test=${currentTestNumber.value + 1}`);
+  return push(path + `?test=${currentTestNumber.value + 1}`);
 }
 
 onMounted(() => {

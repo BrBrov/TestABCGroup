@@ -9,7 +9,7 @@ const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
 const fontDescriptionSize = computed(() => {
-  if(currentTest.value.description.length > 30) return '16px';
+  if(currentTest.value.description.length > 36) return '16px';
 
   return '20px';
 });
@@ -46,11 +46,14 @@ const imgUrl = computed(() => {
 }
 
 .test__description {
+  align-self: center;
+  max-width: 289px;
+  text-align: center;
   font-family: var(--font-pt-serif), sans-serif;
   font-weight: 400;
   font-size: v-bind(fontDescriptionSize);
   letter-spacing: 0.05em;
-  text-align: center;
+  white-space: pre-line;
   color: #fff;
 }
 

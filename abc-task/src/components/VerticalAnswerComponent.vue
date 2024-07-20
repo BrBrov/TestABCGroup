@@ -23,12 +23,14 @@ const answerHeight = computed(() => {
   const answers = tests.getTest(state.getStep()).answers;
   if(answers.length > 5) return '40px';
 
+  if(!answers.every(item => item.length < 37)) return '78px';
+
   return '50px';
 });
 
 function setAnswer({target}) {
   const value = target.dataset.answer;
-  console.log(value);
+
   state.addAnswer(value);
 }
 
@@ -130,22 +132,21 @@ function setAnswer({target}) {
 }
 
 .answer__description {
+  max-width: 213px;
   font-family: var(--font-pt-serif), sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 322%;
+  line-height: 111%;
   letter-spacing: 0.05em;
-  text-transform: capitalize;
   color: #ffffff;
 }
 
 .answer__description-checked {
+  max-width: 213px;
   font-family: var(--font-pt-serif), sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 322%;
   letter-spacing: 0.05em;
-  text-transform: capitalize;
   color: #272727;
 }
 

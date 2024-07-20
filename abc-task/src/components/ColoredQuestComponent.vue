@@ -9,7 +9,6 @@ const tests = testsStore();
 const currentTest = computed(() => tests.getTest(state.getStep()));
 
 function setAnswer({target}) {
-  console.dir(target.dataset.answer);
   state.addAnswer(target.dataset.answer);
 }
 </script>

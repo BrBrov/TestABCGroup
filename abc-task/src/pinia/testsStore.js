@@ -66,8 +66,8 @@ export const testsStore = defineStore('tests', () => {
       url: '',
       description: 'Вам привычнее и важнее:',
       answers: ['Наслаждаться\n' +
-      'каждой минутой \n' +
-      'проведенного времени',
+        'каждой минутой \n' +
+        'проведенного времени',
         'Быть устремленными \n' +
         'мыслями в будущее',
         'Учитывать в ежедневной \n' +
@@ -76,7 +76,7 @@ export const testsStore = defineStore('tests', () => {
     {
       id: 10,
       type: 'text',
-      url: '../assets/webp',
+      url: '../assets/webp/quiz-2.webp',
       description: 'Какое определение, по-Вашему,\nбольше подходит к этому\nгеометрическому изображению:',
       answers: ['Оно остроконечное', 'Оно устойчиво',  'Оно-находится в состоянии равновесия']
     },
@@ -84,7 +84,7 @@ export const testsStore = defineStore('tests', () => {
       id: 11,
       type: 'graphic',
       description: 'Вставьте подходящее число',
-      url: '../assets/webp',
+      url: '../assets/webp/quiz-3.webp',
       isSeparator: true,
       answers: ['1', '2',  '3', '4']
     }

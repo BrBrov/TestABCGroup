@@ -8,16 +8,15 @@ const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
 const currentAnswer = computed(() => state.getCurrentAnswer());
+const imgUrl = computed(() => import.meta.resolve(currentTest.value.url));
 
 const classAnswer = {
   checked: 'test__checked',
   unchecked: 'test__unchecked'
 };
 
-const imgUrl = import.meta.resolve(currentTest.value.url);
-
 function setAnswer({target}) {
-  console.dir(target);
+
   state.addAnswer(target.dataset.answer);
 }
 </script>

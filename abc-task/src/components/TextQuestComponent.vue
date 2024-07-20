@@ -8,6 +8,18 @@ const state = testingState();
 const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
+const fontDescriptionSize = computed(() => {
+  if(currentTest.value.description.length > 30) return '16px';
+
+  return '20px';
+});
+const imgUrl = computed(() => {
+  if(currentTest.value.url) {
+    return import.meta.resolve(currentTest.value.url);
+  }
+
+  return '';
+});
 
 </script>
 
@@ -16,10 +28,10 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
       <h3 class="test__description">
         {{currentTest.description}}
       </h3>
-      <div class="test__img-wrapper" v-if="currentTest.url">
-        <img class="test__image" :src="currentTest.url" alt="Test picture">
+      <div class="test__img-wrapper" v-if="imgUrl">
+        <img class="test__image" :src="imgUrl" alt="Test picture">
       </div>
-      <VerticalAnswerComponent v-if="!currentTest.url"/>
+      <VerticalAnswerComponent/>
   </div>
 </template>
 
@@ -36,13 +48,14 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
 .test__description {
   font-family: var(--font-pt-serif), sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: v-bind(fontDescriptionSize);
   letter-spacing: 0.05em;
   text-align: center;
   color: #fff;
 }
 
 .test__img-wrapper {
+  align-self: center;
   height: 115px;
 }
 

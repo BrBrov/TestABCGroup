@@ -56,7 +56,8 @@ export const testsStore = defineStore('tests', () => {
       id: 8,
       type: 'graphic',
       description: 'Выберите правильную фигуру\n' + ' из четырёх пронумерованных.',
-      url: '',
+      url: '../assets/webp/quiz-1.webp',
+      isSeparator: false,
       answers: ['1', '2',  '3', '4']
     },
     {
@@ -84,6 +85,7 @@ export const testsStore = defineStore('tests', () => {
       type: 'graphic',
       description: 'Вставьте подходящее число',
       url: '../assets/webp',
+      isSeparator: true,
       answers: ['1', '2',  '3', '4']
     }
   ]);

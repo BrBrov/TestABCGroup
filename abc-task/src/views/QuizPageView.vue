@@ -7,6 +7,7 @@ import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import { useRoute, useRouter } from 'vue-router';
 import { computed, onMounted } from 'vue';
+import GraphicalQuestComponent from '@/components/GraphicalQuestComponent.vue';
 
 const { query, path } = useRoute();
 const { push } = useRouter();
@@ -54,6 +55,7 @@ onMounted(() => {
       <progress class="main__progress" :max="maxTest" :value="currentTestNumber + 1"></progress>
       <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'"/>
       <ColoredQuestComponent v-if="tests.getTest(currentTestNumber).type === 'colored'"/>
+      <GraphicalQuestComponent v-if="tests.getTest(currentTestNumber).type === 'graphic'"/>
     </main>
     <footer class="footer">
       <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled' @click="nextTask"/>

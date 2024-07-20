@@ -16,7 +16,10 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
       <h3 class="test__description">
         {{currentTest.description}}
       </h3>
-      <VerticalAnswerComponent/>
+      <div class="test__img-wrapper" v-if="currentTest.url">
+        <img class="test__image" :src="currentTest.url" alt="Test picture">
+      </div>
+      <VerticalAnswerComponent v-if="!currentTest.url"/>
   </div>
 </template>
 
@@ -39,4 +42,11 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
   color: #fff;
 }
 
+.test__img-wrapper {
+  height: 115px;
+}
+
+.test__image {
+  height: 100%;
+}
 </style>

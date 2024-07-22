@@ -12,9 +12,18 @@ const router = createRouter({
     {
       path: '/quiz',
       name: 'quiz',
-      component: () => import('../views/QuizPageView.vue')
-    }
-    ,
+      component: () => import('@/views/QuizPageView.vue')
+    },
+    {
+     path: '/calculate',
+     name: 'calculate',
+     component: () => import('@/views/CalculateView.vue')
+    },
+    {
+      path: '/result',
+      name: 'result',
+      component: () => import('@/views/ResultView.vue')
+    },
     {
       path: '/:pathMatch(.*)*',
       redirect: () => {

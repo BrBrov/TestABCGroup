@@ -15,7 +15,9 @@ const route = useRoute();
     <div class="header__brain" v-if="route.path !=='/'">
       <img class="header__brain-img" :src="brainImage" alt="Brain logo">
     </div>
-    <h1 class="header__label" v-if="route.path !=='/'">тест на определение IQ</h1>
+    <h1 class="header__label" v-if="route.path !=='/' || route.path !=='/calculate'">
+      тест на определение IQ
+    </h1>
   </div>
 </template>
 

@@ -98,6 +98,7 @@ onBeforeUnmount(() => {
   width: 28px;
   height: 28px;
   fill: #ffc700;
+  cursor: pointer;
 }
 
 .menu__navigation {
@@ -118,6 +119,7 @@ onBeforeUnmount(() => {
   font-size: 16px;
   line-height: 137%;
   text-transform: uppercase;
+  cursor: pointer;
   color: #fff;
 }
 .menu__item:active {

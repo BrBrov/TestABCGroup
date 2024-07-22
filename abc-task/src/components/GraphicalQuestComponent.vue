@@ -111,6 +111,7 @@ function setAnswer({ target }) {
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .test__checked {
@@ -122,6 +123,7 @@ function setAnswer({ target }) {
   align-items: center;
   border: 6px solid #ffc700;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .test__answer {

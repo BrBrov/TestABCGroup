@@ -42,6 +42,7 @@ const isShowMenuSet = inject('isShowMenuSet');
   padding: 0;
   background: #181818;
   border: none;
+  cursor: pointer;
 }
 
 .header__menu-img {

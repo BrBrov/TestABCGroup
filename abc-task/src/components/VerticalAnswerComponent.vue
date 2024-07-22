@@ -85,6 +85,7 @@ function setAnswer({ target }) {
   justify-content: flex-start;
   align-items: center;
   gap: 39px;
+  cursor: pointer;
 }
 
 .answer__wrapper::before {
@@ -107,6 +108,7 @@ function setAnswer({ target }) {
   align-items: center;
   gap: 39px;
   background: #ffc700;
+  cursor: pointer;
 }
 
 .answer__checkbox-wrapper {

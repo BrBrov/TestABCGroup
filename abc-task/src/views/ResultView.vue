@@ -251,6 +251,7 @@ onMounted(() => {
   border-radius: 5px;
   gap: 18px;
   background: #eb1b00;
+  cursor: pointer;
 }
 
 .main__button-icon {

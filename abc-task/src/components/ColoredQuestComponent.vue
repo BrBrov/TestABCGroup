@@ -67,6 +67,7 @@ function setAnswer({ target }) {
   height: 81px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .test__answer {
   width: 75px;

@@ -1,14 +1,13 @@
 <script setup>
 import MainTopComponent from '@/components/MainTopComponent.vue';
 import MainBottomComponent from '@/components/MainBottomComponent.vue';
-
 </script>
 
 <template>
-<main class="main">
-  <MainTopComponent/>
-  <MainBottomComponent/>
-</main>
+  <main class="main">
+    <MainTopComponent />
+    <MainBottomComponent />
+  </main>
 </template>
 
 <style scoped>
@@ -19,5 +18,4 @@ import MainBottomComponent from '@/components/MainBottomComponent.vue';
   flex-direction: column;
   justify-content: flex-start;
 }
-
 </style>

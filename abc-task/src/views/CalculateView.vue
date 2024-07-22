@@ -19,7 +19,7 @@ const loadingText = ref('');
 const timingCount = ref(0);
 
 onMounted(() => {
-  if(tests.getNumberOfTests() !== state.getAnswers().length) return push('/');
+  if (tests.getNumberOfTests() !== state.getAnswers().length) return push('/');
 
   if (!timingCount.value) {
     return setInterval(() => {
@@ -27,33 +27,34 @@ onMounted(() => {
       loadingText.value = loadingText.value + '.';
     }, 100);
   }
-})
-
-watch(timingCount, () => {
-  if(timingCount.value === 68) return push('/result');
 });
 
+watch(timingCount, () => {
+  if (timingCount.value === 68) return push('/result');
+});
 </script>
 
 <template>
-  <MenuComponent v-if="isShowMenu"/>
+  <MenuComponent v-if="isShowMenu" />
   <div class="wrapper">
     <header class="header">
-      <HeaderMenuComponent/>
+      <HeaderMenuComponent />
     </header>
     <main class="main">
-      <progress class="main__progress" :max="tests.getNumberOfTests()" :value="currentTestNumber + 1"></progress>
+      <progress
+        class="main__progress"
+        :max="tests.getNumberOfTests()"
+        :value="currentTestNumber + 1"
+      ></progress>
       <section class="main__processing">
-        <h2 class="main__progress-title">
-          Обработка результатов
-        </h2>
+        <h2 class="main__progress-title">Обработка результатов</h2>
         <div class="main__loading-wrapper">
-          <img class="main__loading" :src="loadingImg" alt="Loading...">
+          <img class="main__loading" :src="loadingImg" alt="Loading..." />
         </div>
       </section>
     </main>
     <footer class="footer">
-      <div class="footer__loading-text">Определение стиля мышления{{loadingText}}</div>
+      <div class="footer__loading-text">Определение стиля мышления{{ loadingText }}</div>
     </footer>
   </div>
 </template>
@@ -131,7 +132,6 @@ watch(timingCount, () => {
   to {
     transform: rotate(-360deg);
   }
-
 }
 .main__loading-wrapper {
   display: flex;
@@ -165,5 +165,4 @@ watch(timingCount, () => {
   letter-spacing: 0.05em;
   color: #fff;
 }
-
 </style>

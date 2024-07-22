@@ -3,14 +3,13 @@ import { defineProps } from 'vue';
 const dataPerson = defineProps({
   data: Object
 });
-
 </script>
 
 <template>
-<div class="person">
-  <span class="person__name">Name: {{dataPerson.data.name}}</span>
-  <span class="person__planet">Planet: {{dataPerson.data.planet}}</span>
-</div>
+  <div class="person">
+    <span class="person__name">Name: {{ dataPerson.data.name }}</span>
+    <span class="person__planet">Planet: {{ dataPerson.data.planet }}</span>
+  </div>
 </template>
 
 <style scoped>

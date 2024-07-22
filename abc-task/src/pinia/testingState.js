@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const testingState = defineStore('processing',
-  () => {
+export const testingState = defineStore('processing', () => {
   const processing = ref({
     step: 0,
     answers: []
@@ -21,12 +20,12 @@ export const testingState = defineStore('processing',
     processing.value.answers[processing.value.step] = answer;
   }
 
-  function getAnswers(){
-     return processing.value.answers;
+  function getAnswers() {
+    return processing.value.answers;
   }
 
   function getCurrentAnswer() {
-    if(processing.value.answers.length === 0) return '';
+    if (processing.value.answers.length === 0) return '';
     return processing.value.answers[processing.value.step];
   }
 
@@ -34,6 +33,5 @@ export const testingState = defineStore('processing',
     return processing.value.step;
   }
 
-  return {processing, incrementStep, resetQuiz, addAnswer, getAnswers, getCurrentAnswer, getStep};
-  }
-);
+  return { processing, incrementStep, resetQuiz, addAnswer, getAnswers, getCurrentAnswer, getStep };
+});

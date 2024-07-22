@@ -7,17 +7,14 @@ provide('isShowMenuSet', driveMenu);
 provide('isShowMenu', isMenuShow);
 
 function driveMenu() {
-  if(!isMenuShow.value) return isMenuShow.value = true;
+  if (!isMenuShow.value) return (isMenuShow.value = true);
 
-  return isMenuShow.value = false;
+  return (isMenuShow.value = false);
 }
-
 </script>
 
 <template>
-    <RouterView/>
+  <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,5 +1,4 @@
 <script setup>
-
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import { computed } from 'vue';
@@ -21,41 +20,46 @@ const currentTest = computed(() => tests.getTest(state.getStep()));
 const currentAnswer = computed(() => state.getCurrentAnswer());
 const answerHeight = computed(() => {
   const answers = tests.getTest(state.getStep()).answers;
-  if(answers.length > 5) return '40px';
+  if (answers.length > 5) return '40px';
 
-  if(!answers.every(item => item.length < 37)) return '78px';
+  if (!answers.every((item) => item.length < 37)) return '78px';
 
   return '50px';
 });
 
-function setAnswer({target}) {
+function setAnswer({ target }) {
   const value = target.dataset.answer;
 
   state.addAnswer(value);
 }
-
 </script>
 
 <template>
   <ul class="answer">
-    <li :class="currentAnswer === answer ? classForWrapper.checked : classForWrapper.unchecked"
-        v-for="(answer, index) in currentTest.answers"
-        :key="answer"
-        :data-answer="answer"
-        @click="setAnswer">
+    <li
+      :class="currentAnswer === answer ? classForWrapper.checked : classForWrapper.unchecked"
+      v-for="(answer, index) in currentTest.answers"
+      :key="answer"
+      :data-answer="answer"
+      @click="setAnswer"
+    >
       <div class="answer__checkbox-wrapper">
         <label class="answer__checkbox" :for="'answer__check-' + index">
-          <input :id="'answer__check-' + index"
-                 class="answer__check-class"
-                 type="checkbox"
-                 :data-answer="answer"
-                 :checked="currentAnswer === answer">
+          <input
+            :id="'answer__check-' + index"
+            class="answer__check-class"
+            type="checkbox"
+            :data-answer="answer"
+            :checked="currentAnswer === answer"
+          />
           <span class="answer__mark"></span>
         </label>
       </div>
-      <div :class="currentAnswer === answer ? classForTextColor.checked : classForTextColor.unchecked"
-           :key="answer">
-        {{answer}}
+      <div
+        :class="currentAnswer === answer ? classForTextColor.checked : classForTextColor.unchecked"
+        :key="answer"
+      >
+        {{ answer }}
       </div>
     </li>
   </ul>
@@ -150,5 +154,4 @@ function setAnswer({target}) {
   letter-spacing: 0.05em;
   color: #272727;
 }
-
 </style>

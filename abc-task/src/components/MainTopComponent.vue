@@ -1,25 +1,24 @@
 <script setup>
 import topQuote from '@/assets/svg/top-quote.svg';
 import bottomQuote from '@/assets/svg/bottom-quote.svg';
-
 </script>
 
 <template>
   <section class="main__top">
     <div class="main__top__wrapper">
-      <img class="main__top-quotes" :src="topQuote" alt="Top quote">
+      <img class="main__top-quotes" :src="topQuote" alt="Top quote" />
       <h2 class="main__top-text">
-        Профессиональный<br>
-        IQ-тест позволяет не<br>
-        только определить<br>
-        коэффициент вашего<br>
-        интеллекта,<br>
-        но и выработать список<br>
-        рекомендаций для<br>
-        повышения этого<br>
+        Профессиональный<br />
+        IQ-тест позволяет не<br />
+        только определить<br />
+        коэффициент вашего<br />
+        интеллекта,<br />
+        но и выработать список<br />
+        рекомендаций для<br />
+        повышения этого<br />
         показателя.
       </h2>
-      <img class="main__bottom__quotes" :src="bottomQuote" alt="Bottom quote">
+      <img class="main__bottom__quotes" :src="bottomQuote" alt="Bottom quote" />
     </div>
   </section>
 </template>
@@ -30,11 +29,14 @@ import bottomQuote from '@/assets/svg/bottom-quote.svg';
   height: 339px;
   box-sizing: border-box;
   padding: 43px 0 24px;
-  background: radial-gradient(47% 32% at 50% 55%,
-              #2950C2 0%,
-              rgba(38.08, 91.25, 198.69, 0.96) 41%,
-              rgba(39, 98, 187, 0) 85%),
-              url('../assets/webp/bg_middle.webp') center/cover no-repeat;
+  background:
+    radial-gradient(
+      47% 32% at 50% 55%,
+      #2950c2 0%,
+      rgba(38.08, 91.25, 198.69, 0.96) 41%,
+      rgba(39, 98, 187, 0) 85%
+    ),
+    url('../assets/webp/bg_middle.webp') center/cover no-repeat;
 }
 
 .main__top__wrapper {
@@ -67,5 +69,4 @@ import bottomQuote from '@/assets/svg/bottom-quote.svg';
   text-align: center;
   color: #fff;
 }
-
 </style>

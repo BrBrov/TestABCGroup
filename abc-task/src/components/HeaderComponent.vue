@@ -1,13 +1,12 @@
 <script setup>
 import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
 import HeaderInfoComponent from '@/components/HeaderInfoComponent.vue';
-
 </script>
 
 <template>
   <header class="header">
-    <HeaderMenuComponent/>
-    <HeaderInfoComponent/>
+    <HeaderMenuComponent />
+    <HeaderInfoComponent />
   </header>
 </template>
 

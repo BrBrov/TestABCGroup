@@ -6,11 +6,10 @@ import { inject, reactive } from 'vue';
 import MenuComponent from '@/components/MenuComponent.vue';
 
 const isShowMenu = reactive(inject('isShowMenu'));
-
 </script>
 
 <template>
-  <MenuComponent v-if="isShowMenu"/>
+  <MenuComponent v-if="isShowMenu" />
   <div class="wrapper">
     <HeaderComponent />
     <MainComponent />

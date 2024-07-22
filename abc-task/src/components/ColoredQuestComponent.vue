@@ -8,7 +8,7 @@ const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
 
-function setAnswer({target}) {
+function setAnswer({ target }) {
   state.addAnswer(target.dataset.answer);
 }
 </script>
@@ -20,11 +20,12 @@ function setAnswer({target}) {
     </h3>
     <div class="test__answers-wrapper">
       <div class="test__answer-one" v-for="(answer, index) in currentTest.answers" :key="index">
-        <div :class="state.getCurrentAnswer() === answer ? 'test__answer-checked' : 'test__answer'"
-             :style="{'background-color': answer}"
-             :data-answer="answer"
-             @click="setAnswer">
-        </div>
+        <div
+          :class="state.getCurrentAnswer() === answer ? 'test__answer-checked' : 'test__answer'"
+          :style="{ 'background-color': answer }"
+          :data-answer="answer"
+          @click="setAnswer"
+        ></div>
       </div>
     </div>
   </div>

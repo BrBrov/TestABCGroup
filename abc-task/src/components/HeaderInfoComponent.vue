@@ -8,29 +8,32 @@ const router = useRouter();
 function buttonClick() {
   router.push('/quiz?test=1');
 }
-
 </script>
 
 <template>
-<section class="header__info">
-  <div class="header__top-wrapper">
-    <h2 class="header__text-md">Пройдите точный и быстрый</h2>
-    <h1 class="header__text-title">Tecт на определение IQ</h1>
-  </div>
-  <div class="header__bottom-wrapper">
-    <ButtonComponent text = 'Пройти тест' :isDisabled = "false" @button-click="buttonClick"/>
-    <div class="header__text-bottom">
-      <span class="header__text-yellow">И получите рекомендации по развитию своего интеллекта</span>
-      <span class="header__text-white">и улучшению финансового благосостояния и личной жизни</span>
+  <section class="header__info">
+    <div class="header__top-wrapper">
+      <h2 class="header__text-md">Пройдите точный и быстрый</h2>
+      <h1 class="header__text-title">Tecт на определение IQ</h1>
     </div>
-    <div class="header__bottom-block">
-      <div class="header__arrow-wrapper">
-        <img class="header__arrow-up" :src="arrow" alt="Перейти в начало"/>
+    <div class="header__bottom-wrapper">
+      <ButtonComponent text="Пройти тест" :isDisabled="false" @button-click="buttonClick" />
+      <div class="header__text-bottom">
+        <span class="header__text-yellow"
+          >И получите рекомендации по развитию своего интеллекта</span
+        >
+        <span class="header__text-white"
+          >и улучшению финансового благосостояния и личной жизни</span
+        >
       </div>
-      <h4 class="header__arrow-description">Подробнее</h4>
+      <div class="header__bottom-block">
+        <div class="header__arrow-wrapper">
+          <img class="header__arrow-up" :src="arrow" alt="Перейти в начало" />
+        </div>
+        <h4 class="header__arrow-description">Подробнее</h4>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 
 <style scoped>
@@ -57,7 +60,7 @@ function buttonClick() {
 
 .header__text-md {
   margin: 0;
-  font-family: var(--font-pt-serif),sans-serif;
+  font-family: var(--font-pt-serif), sans-serif;
   font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.05em;

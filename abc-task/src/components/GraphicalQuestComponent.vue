@@ -15,8 +15,7 @@ const classAnswer = {
   unchecked: 'test__unchecked'
 };
 
-function setAnswer({target}) {
-
+function setAnswer({ target }) {
   state.addAnswer(target.dataset.answer);
 }
 </script>
@@ -24,21 +23,25 @@ function setAnswer({target}) {
 <template>
   <div class="test">
     <h3 class="test__description">
-      {{currentTest.description}}
+      {{ currentTest.description }}
     </h3>
     <div class="test__img-wrapper">
-      <img class="test__image" :src="imgUrl" alt="Test picture">
+      <img class="test__image" :src="imgUrl" alt="Test picture" />
     </div>
     <div class="test__separator-wrapper" v-if="currentTest.isSeparator">
       <div class="test__separator"></div>
     </div>
     <ul class="test__answers-wrapper">
-      <li :class="(currentAnswer === answer ? classAnswer.checked : classAnswer.unchecked) + ' ' + index"
-          v-for="(answer, index) in currentTest.answers"
-          :key="answer"
-          :data-answer="answer"
-          @click="setAnswer">
-        <span class="test__answer" :data-answer="answer">{{answer}}</span>
+      <li
+        :class="
+          (currentAnswer === answer ? classAnswer.checked : classAnswer.unchecked) + ' ' + index
+        "
+        v-for="(answer, index) in currentTest.answers"
+        :key="answer"
+        :data-answer="answer"
+        @click="setAnswer"
+      >
+        <span class="test__answer" :data-answer="answer">{{ answer }}</span>
       </li>
     </ul>
   </div>
@@ -57,11 +60,12 @@ function setAnswer({target}) {
 .test__description {
   width: 289px;
   margin: 0 auto;
-  font-family: var(--font-pt-serif), sans-serif;font-weight: 400;
+  font-family: var(--font-pt-serif), sans-serif;
+  font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.05em;
   text-align: center;
-  color: #fff
+  color: #fff;
 }
 
 .test__img-wrapper {

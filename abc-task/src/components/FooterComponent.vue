@@ -10,30 +10,36 @@ function buttonClick() {
 </script>
 
 <template>
-<footer class="footer">
-  <h2 class="footer__text">
-    Прохождение теста займет<br>
-    у вас не более <strong class="footer__text-colored">12 минут</strong>, а его<br>
-    <strong class="footer__text-bold">результаты</strong> вы сможете<br>
-    <strong class="footer__text-colored">использовать всю жизнь.</strong>
-  </h2>
-  <aside class="footer__description">
-    Профессиональная<br>
-    интерпретация и детально<br>
-    <strong class="footer__description-bold">проработанные<br>
-    рекомендации</strong> позволят вам<br>
-    качественно <strong class="footer__description-bold">изменить все<br>
-    аспекты своей жизни</strong>: от<br>
-    финансового до любовного.
-  </aside>
-  <button class="footer__button" @click="buttonClick">
-    <span class="footer__btn-text">Пойти</span>
-  </button>
-  <div class="footer__made">
-    <img class="footer__made-license" :src="logoLicense" alt="Logo license">
-    <span class="footer__made-year">2019</span>
-  </div>
-</footer>
+  <footer class="footer">
+    <h2 class="footer__text">
+      Прохождение теста займет<br />
+      у вас не более <strong class="footer__text-colored">12 минут</strong>, а его<br />
+      <strong class="footer__text-bold">результаты</strong> вы сможете<br />
+      <strong class="footer__text-colored">использовать всю жизнь.</strong>
+    </h2>
+    <aside class="footer__description">
+      Профессиональная<br />
+      интерпретация и детально<br />
+      <strong class="footer__description-bold"
+        >проработанные<br />
+        рекомендации</strong
+      >
+      позволят вам<br />
+      качественно
+      <strong class="footer__description-bold"
+        >изменить все<br />
+        аспекты своей жизни</strong
+      >: от<br />
+      финансового до любовного.
+    </aside>
+    <button class="footer__button" @click="buttonClick">
+      <span class="footer__btn-text">Пойти</span>
+    </button>
+    <div class="footer__made">
+      <img class="footer__made-license" :src="logoLicense" alt="Logo license" />
+      <span class="footer__made-year">2019</span>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
@@ -132,5 +138,4 @@ function buttonClick() {
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.5);
 }
-
 </style>

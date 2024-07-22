@@ -25,7 +25,7 @@ const isButtonEnabled = computed(() => {
 const isShowMenu = reactive(inject('isShowMenu'));
 
 function nextTask() {
-  if(maxTest.value === state.getAnswers().length) {
+  if (maxTest.value === state.getAnswers().length) {
     return push('/calculate');
   }
 
@@ -41,7 +41,7 @@ onMounted(() => {
 
   const step = parseInt(query.test);
 
-  if(!step) {
+  if (!step) {
     state.resetQuiz();
     return push('/');
   }
@@ -50,26 +50,24 @@ onMounted(() => {
     return push(path + `?test=${state.getStep() + 1}`);
   }
 });
-
 </script>
 
 <template>
-  <MenuComponent v-if="isShowMenu"/>
+  <MenuComponent v-if="isShowMenu" />
   <div class="wrapper">
     <header class="header">
-      <HeaderMenuComponent/>
+      <HeaderMenuComponent />
     </header>
     <main class="main">
       <progress class="main__progress" :max="maxTest" :value="currentTestNumber + 1"></progress>
-      <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'"/>
-      <ColoredQuestComponent v-if="tests.getTest(currentTestNumber).type === 'colored'"/>
-      <GraphicalQuestComponent v-if="tests.getTest(currentTestNumber).type === 'graphic'"/>
+      <TextQuestComponent v-if="tests.getTest(currentTestNumber).type === 'text'" />
+      <ColoredQuestComponent v-if="tests.getTest(currentTestNumber).type === 'colored'" />
+      <GraphicalQuestComponent v-if="tests.getTest(currentTestNumber).type === 'graphic'" />
     </main>
     <footer class="footer">
-      <ButtonComponent text="Далее" :isDisabled = 'isButtonEnabled' @click="nextTask"/>
+      <ButtonComponent text="Далее" :isDisabled="isButtonEnabled" @click="nextTask" />
     </footer>
   </div>
-
 </template>
 
 <style scoped>

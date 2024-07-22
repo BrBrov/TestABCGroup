@@ -13,17 +13,23 @@ function buttonClick() {
 <template>
   <section class="main__bottom">
     <h2 class="main__bottom-title">
-      Также по результатам теста<br>
-      <strong class="main__strong-text strong-text_uppercase">вы получите</strong> подробные<br>
-      <strong class="main__strong-text strong-text_uppercase">советы</strong> по определению наиболее<br>
-      перспективной <strong class="main__strong-text strong-text_uppercase">для вашего</strong><br>
-      <strong class="main__strong-text strong-text_uppercase">типа </strong><strong class="main__strong-text">интеллекта </strong><strong>сферы<br>
-      деятельности</strong>,<br>
-      которая принесет вам скорейший<br>
-      финансовый результат.<br>
+      Также по результатам теста<br />
+      <strong class="main__strong-text strong-text_uppercase">вы получите</strong> подробные<br />
+      <strong class="main__strong-text strong-text_uppercase">советы</strong> по определению
+      наиболее<br />
+      перспективной <strong class="main__strong-text strong-text_uppercase">для вашего</strong
+      ><br />
+      <strong class="main__strong-text strong-text_uppercase">типа </strong
+      ><strong class="main__strong-text">интеллекта </strong
+      ><strong
+        >сферы<br />
+        деятельности</strong
+      >,<br />
+      которая принесет вам скорейший<br />
+      финансовый результат.<br />
     </h2>
-    <img class="main__bottom-img" :src="logoBrain" alt="Brain banner">
-    <ButtonComponent text="Пойти тест" :isDisabled="false" @button-click="buttonClick"/>
+    <img class="main__bottom-img" :src="logoBrain" alt="Brain banner" />
+    <ButtonComponent text="Пойти тест" :isDisabled="false" @button-click="buttonClick" />
   </section>
 </template>
 
@@ -60,5 +66,4 @@ function buttonClick() {
   width: 232px;
   height: 180px;
 }
-
 </style>

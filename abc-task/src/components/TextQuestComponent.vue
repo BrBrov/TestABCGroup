@@ -9,29 +9,28 @@ const tests = testsStore();
 
 const currentTest = computed(() => tests.getTest(state.getStep()));
 const fontDescriptionSize = computed(() => {
-  if(currentTest.value.description.length > 36) return '16px';
+  if (currentTest.value.description.length > 36) return '16px';
 
   return '20px';
 });
 const imgUrl = computed(() => {
-  if(currentTest.value.url) {
+  if (currentTest.value.url) {
     return import.meta.resolve(currentTest.value.url);
   }
 
   return '';
 });
-
 </script>
 
 <template>
   <div class="test">
-      <h3 class="test__description">
-        {{currentTest.description}}
-      </h3>
-      <div class="test__img-wrapper" v-if="imgUrl">
-        <img class="test__image" :src="imgUrl" alt="Test picture">
-      </div>
-      <VerticalAnswerComponent/>
+    <h3 class="test__description">
+      {{ currentTest.description }}
+    </h3>
+    <div class="test__img-wrapper" v-if="imgUrl">
+      <img class="test__image" :src="imgUrl" alt="Test picture" />
+    </div>
+    <VerticalAnswerComponent />
   </div>
 </template>
 

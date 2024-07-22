@@ -15,9 +15,9 @@ const router = createRouter({
       component: () => import('@/views/QuizPageView.vue')
     },
     {
-     path: '/calculate',
-     name: 'calculate',
-     component: () => import('@/views/CalculateView.vue')
+      path: '/calculate',
+      name: 'calculate',
+      component: () => import('@/views/CalculateView.vue')
     },
     {
       path: '/result',
@@ -27,7 +27,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       redirect: () => {
-        return {path: '/'};
+        return { path: '/' };
       }
     }
   ]

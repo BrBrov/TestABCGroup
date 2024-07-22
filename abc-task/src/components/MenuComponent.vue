@@ -15,11 +15,11 @@ function reset(path) {
   setTimeout(() => {
     state.resetQuiz();
     setMenuShow();
-    router.push(path)
+    router.push(path);
   }, 250);
 }
 
-function handleClick({target}) {
+function handleClick({ target }) {
   switch (target.dataset.id) {
     case '0':
       return reset('/');
@@ -37,36 +37,31 @@ function preventScroll(event) {
 }
 
 onBeforeMount(() => {
-  window.addEventListener('wheel', preventScroll, {passive: false});
-  window.addEventListener('touchmove', preventScroll, {passive: false});
-  window.addEventListener('keydown', preventScroll, {passive: false});
-})
+  window.addEventListener('wheel', preventScroll, { passive: false });
+  window.addEventListener('touchmove', preventScroll, { passive: false });
+  window.addEventListener('keydown', preventScroll, { passive: false });
+});
 
 onBeforeUnmount(() => {
   window.removeEventListener('wheel', preventScroll);
   window.addEventListener('touchmove', preventScroll);
   window.addEventListener('keydown', preventScroll);
-})
-
+});
 </script>
 
 <template>
-<div class="menu__wrapper">
-  <nav class="menu">
-    <div class="menu__close">
-      <img class="menu__close-img" :src="closeImg" alt="Close" @click.stop="setMenuShow">
-    </div>
-    <ul class="menu__navigation" @click="handleClick">
-      <li class="menu__item"
-          v-for="(item, index) in itemsList"
-          :key="index"
-          :data-id="index"
-      >
-        {{item}}
-      </li>
-    </ul>
-  </nav>
-</div>
+  <div class="menu__wrapper">
+    <nav class="menu">
+      <div class="menu__close">
+        <img class="menu__close-img" :src="closeImg" alt="Close" @click.stop="setMenuShow" />
+      </div>
+      <ul class="menu__navigation" @click="handleClick">
+        <li class="menu__item" v-for="(item, index) in itemsList" :key="index" :data-id="index">
+          {{ item }}
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <style scoped>

@@ -7,25 +7,20 @@ import { inject } from 'vue';
 const route = useRoute();
 
 const isShowMenuSet = inject('isShowMenuSet');
-
 </script>
 
 <template>
   <div class="header__menu">
     <button class="header__btn" @click="isShowMenuSet">
-      <img class="header__menu-img" :src="menu" alt="Open menu">
+      <img class="header__menu-img" :src="menu" alt="Open menu" />
     </button>
-    <div class="header__brain" v-if="route.path !=='/'">
-      <img class="header__brain-img"
-           :src="brainImage"
-           alt="Brain logo">
+    <div class="header__brain" v-if="route.path !== '/'">
+      <img class="header__brain-img" :src="brainImage" alt="Brain logo" />
     </div>
-    <h1 class="header__label" v-if="route.path !=='/' && route.path !=='/result'">
+    <h1 class="header__label" v-if="route.path !== '/' && route.path !== '/result'">
       тест на определение IQ
     </h1>
-    <h1 class="header__label-result" v-if="route.path ==='/result'">
-      ГОТОВО!
-    </h1>
+    <h1 class="header__label-result" v-if="route.path === '/result'">ГОТОВО!</h1>
   </div>
 </template>
 
@@ -78,12 +73,12 @@ const isShowMenuSet = inject('isShowMenuSet');
   width: 168px;
   height: 18px;
   margin-left: 24px;
-  color: #FFC700;
+  color: #ffc700;
   font-size: 20px;
   font-family: var(--font-yeseva-one), sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
-  word-wrap: break-word
+  word-wrap: break-word;
 }
 </style>

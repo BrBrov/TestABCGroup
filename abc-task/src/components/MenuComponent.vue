@@ -12,9 +12,11 @@ const state = testingState();
 const setMenuShow = inject('isShowMenuSet');
 
 function reset(path) {
-  state.resetQuiz();
-  setMenuShow();
-  router.push(path);
+  setTimeout(() => {
+    state.resetQuiz();
+    setMenuShow();
+    router.push(path)
+  }, 250);
 }
 
 function handleClick({target}) {

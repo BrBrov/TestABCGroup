@@ -81,6 +81,7 @@ onBeforeUnmount(() => {
   width: 320px;
   height: 569px;
   box-sizing: border-box;
+  margin: 0 auto;
   padding: 18px 13px 348px 23px;
   flex-direction: column;
   justify-content: flex-start;

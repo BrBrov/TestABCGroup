@@ -61,7 +61,7 @@ watch(timingCount, () => {
 
 <style scoped>
 .wrapper {
-  min-width: 320px;
+  width: 320px;
   height: 100vh;
   min-height: 568px;
   margin: 0 auto;

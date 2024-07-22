@@ -62,47 +62,49 @@ onMounted(() => {
 <template>
   <MenuComponent v-if="isShowMenu" />
   <div class="wrapper">
-    <header class="header">
-      <HeaderMenuComponent />
-    </header>
-    <main class="main">
-      <div class="main__text">
-        <h2 class="main__text-top">Ваш результат рассчитан:</h2>
-        <h3 class="main__text-bottom">
-          <u>Вы относитесь к 3%</u> респондентов, чей<br />
-          уровень интеллекта более чем на<br />
-          15 пунктов отличается от среднего в<br />
-          большую или меньшую сторону!
-        </h3>
-      </div>
-      <h2 class="main__label">Скорее получите свой результат!</h2>
-      <div class="main__info-wrapper">
-        <h3 class="main__info">
-          В целях защиты персональных<br />
-          данных результат теста, их<br />
-          подробная интерпретация и<br />
-          рекомендации доступны в виде<br />
-          голосового сообщения по звонку с<br />
-          вашего мобильного телефона
-        </h3>
-      </div>
-      <div class="main__timer">
-        <span class="main__timer-info">Звоните скорее, запись доступна всего</span>
-        <span class="main__timer-process">
+    <div class="wrapper__top">
+      <header class="header">
+        <HeaderMenuComponent />
+      </header>
+      <main class="main">
+        <div class="main__text">
+          <h2 class="main__text-top">Ваш результат рассчитан:</h2>
+          <h3 class="main__text-bottom">
+            <u>Вы относитесь к 3%</u> респондентов, чей<br />
+            уровень интеллекта более чем на<br />
+            15 пунктов отличается от среднего в<br />
+            большую или меньшую сторону!
+          </h3>
+        </div>
+        <h2 class="main__label">Скорее получите свой результат!</h2>
+        <div class="main__info-wrapper">
+          <h3 class="main__info">
+            В целях защиты персональных<br />
+            данных результат теста, их<br />
+            подробная интерпретация и<br />
+            рекомендации доступны в виде<br />
+            голосового сообщения по звонку с<br />
+            вашего мобильного телефона
+          </h3>
+        </div>
+        <div class="main__timer">
+          <span class="main__timer-info">Звоните скорее, запись доступна всего</span>
+          <span class="main__timer-process">
           {{ minutes < 10 ? `0${minutes}` : minutes }}{{ timerIndicators
-          }}{{ seconds < 10 ? `0${seconds}` : seconds }}
+            }}{{ seconds < 10 ? `0${seconds}` : seconds }}
           <span class="main__timer-minutes"> минут</span>
         </span>
-      </div>
-      <button class="main__call-button" @click="getData">
-        <img class="main__button-icon" :src="callIcon" alt="Call icon" />
-        <span class="main__button-text">
+        </div>
+        <button class="main__call-button" @click="getData">
+          <img class="main__button-icon" :src="callIcon" alt="Call icon" />
+          <span class="main__button-text">
           Позвонить и прослушать<br />
           результат
         </span>
-      </button>
-      <CalledResult :data="fetchedData" v-if="fetchedData" />
-    </main>
+        </button>
+        <CalledResult :data="fetchedData" v-if="fetchedData" />
+      </main>
+    </div>
     <footer class="footer">
       <span class="footer__text">TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU</span>
       <span class="footer__text">DE DIVERTISMENT. PRIN FOLOSIREA LUI</span>
@@ -113,11 +115,19 @@ onMounted(() => {
 
 <style scoped>
 .wrapper {
-  min-width: 320px;
-  height: 100vh;
-  min-height: 683px;
+  display: flex;
+  width: 320px;
+  height: calc(100vh + 9px);
   margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
   background: url('../assets/webp/bg_result.webp') top/100% fixed no-repeat;
+}
+
+.wrapper__top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .header {

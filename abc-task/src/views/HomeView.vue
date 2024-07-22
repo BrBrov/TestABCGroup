@@ -21,8 +21,7 @@ const isShowMenu = reactive(inject('isShowMenu'));
 .wrapper {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1200px;
+  width: 320px;
   height: 100vh;
   margin: 0 auto;
   top: 0;

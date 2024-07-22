@@ -15,8 +15,11 @@ const route = useRoute();
     <div class="header__brain" v-if="route.path !=='/'">
       <img class="header__brain-img" :src="brainImage" alt="Brain logo">
     </div>
-    <h1 class="header__label" v-if="route.path !=='/' || route.path !=='/calculate'">
+    <h1 class="header__label" v-if="route.path !=='/' && route.path !=='/result'">
       тест на определение IQ
+    </h1>
+    <h1 class="header__label-result" v-if="route.path ==='/result'">
+      ГОТОВО!
     </h1>
   </div>
 </template>
@@ -64,5 +67,18 @@ const route = useRoute();
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #ffc700;
+}
+
+.header__label-result {
+  width: 168px;
+  height: 18px;
+  margin-left: 24px;
+  color: #FFC700;
+  font-size: 20px;
+  font-family: var(--font-yeseva-one), sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  word-wrap: break-word
 }
 </style>

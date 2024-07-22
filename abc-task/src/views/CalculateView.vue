@@ -1,26 +1,23 @@
 <script setup>
 import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
 import loadingImg from '@/assets/svg/loader.svg';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import { computed, onMounted, ref, watch } from 'vue';
 
-const { path } = useRoute();
 const { push } = useRouter();
 
 const state = testingState();
 const tests = testsStore();
 
 const currentTestNumber = computed(() => state.getStep());
-const maxTest = computed(() => tests.getNumberOfTests());
+
 const loadingText = ref('');
 const timingCount = ref(0);
 
 onMounted(() => {
-  console.log(maxTest.value);
-  console.log(state.getAnswers());
-  if(maxTest.value !== state.getAnswers().length) return push('/');
+  if(tests.getNumberOfTests() !== state.getAnswers().length) return push('/');
 
   if (!timingCount.value) {
     return setInterval(() => {
@@ -42,7 +39,7 @@ watch(timingCount, () => {
       <HeaderMenuComponent/>
     </header>
     <main class="main">
-      <progress class="main__progress" :max="maxTest" :value="currentTestNumber + 1"></progress>
+      <progress class="main__progress" :max="tests.getNumberOfTests()" :value="currentTestNumber + 1"></progress>
       <section class="main__processing">
         <h2 class="main__progress-title">
           Обработка результатов

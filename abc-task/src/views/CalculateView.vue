@@ -4,12 +4,14 @@ import loadingImg from '@/assets/svg/loader.svg';
 import { useRouter } from 'vue-router';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, inject, onMounted, reactive, ref, watch } from 'vue';
+import MenuComponent from '@/components/MenuComponent.vue';
 
 const { push } = useRouter();
 
 const state = testingState();
 const tests = testsStore();
+const isShowMenu = reactive(inject('isShowMenu'));
 
 const currentTestNumber = computed(() => state.getStep());
 
@@ -34,6 +36,7 @@ watch(timingCount, () => {
 </script>
 
 <template>
+  <MenuComponent v-if="isShowMenu"/>
   <div class="wrapper">
     <header class="header">
       <HeaderMenuComponent/>

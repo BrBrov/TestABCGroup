@@ -4,13 +4,16 @@ import { useRouter } from 'vue-router';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import HeaderMenuComponent from '@/components/HeaderMenuComponent.vue';
-import { onMounted, ref, watch } from 'vue';
+import { inject, onMounted, reactive, ref, watch } from 'vue';
 import CalledResult from '@/components/CalledResult.vue';
+import MenuComponent from '@/components/MenuComponent.vue';
 
 const { push } = useRouter();
 
 const state = testingState();
 const tests = testsStore();
+
+const isShowMenu = reactive(inject('isShowMenu'));
 
 const minutes = ref(10);
 const seconds = ref(0);
@@ -19,7 +22,7 @@ const fetchedData = ref();
 
 function timer() {
   setInterval(() => {
-    if(!seconds.value) {
+    if (!seconds.value) {
       seconds.value = 59;
       return minutes.value = --minutes.value;
     }
@@ -32,7 +35,7 @@ function timer() {
   }, 500);
 }
 
-async function  getData() {
+async function getData() {
   const personData = await fetch('https://swapi.dev/api/people/1/');
   const person = await personData.json();
 
@@ -46,11 +49,11 @@ async function  getData() {
 }
 
 watch(minutes, () => {
-  if(minutes.value < 0) return push('/');
+  if (minutes.value < 0) return push('/');
 });
 
 onMounted(() => {
-  if(tests.getNumberOfTests() !== state.getAnswers().length) return push('/');
+  if (tests.getNumberOfTests() !== state.getAnswers().length) return push('/');
 
   timer();
 });
@@ -58,57 +61,58 @@ onMounted(() => {
 </script>
 
 <template>
-<div class="wrapper">
-  <header class="header">
-    <HeaderMenuComponent/>
-  </header>
-  <main class="main">
-    <div class="main__text">
-      <h2 class="main__text-top">
-        Ваш результат рассчитан:
+  <MenuComponent v-if="isShowMenu" />
+  <div class="wrapper">
+    <header class="header">
+      <HeaderMenuComponent />
+    </header>
+    <main class="main">
+      <div class="main__text">
+        <h2 class="main__text-top">
+          Ваш результат рассчитан:
+        </h2>
+        <h3 class="main__text-bottom">
+          <u>Вы относитесь к 3%</u> респондентов, чей<br>
+          уровень интеллекта более чем на<br>
+          15 пунктов отличается от среднего в<br>
+          большую или меньшую сторону!
+        </h3>
+      </div>
+      <h2 class="main__label">
+        Скорее получите свой результат!
       </h2>
-      <h3 class="main__text-bottom">
-        <u>Вы относитесь к 3%</u> респондентов, чей<br>
-        уровень интеллекта более чем на<br>
-        15 пунктов отличается от среднего в<br>
-        большую или меньшую сторону!
-      </h3>
-    </div>
-    <h2 class="main__label">
-      Скорее получите свой результат!
-    </h2>
-    <div class="main__info-wrapper">
-      <h3 class="main__info">
-        В целях защиты персональных<br>
-        данных результат теста, их<br>
-        подробная интерпретация и<br>
-        рекомендации доступны в виде<br>
-        голосового сообщения по звонку с<br>
-        вашего мобильного телефона
-      </h3>
-    </div>
-    <div class="main__timer">
-      <span class="main__timer-info">Звоните скорее, запись доступна всего</span>
-      <span class="main__timer-process">
-        {{minutes < 10 ? `0${minutes}` : minutes}}{{timerIndicators}}{{seconds < 10 ? `0${seconds}`: seconds}}
+      <div class="main__info-wrapper">
+        <h3 class="main__info">
+          В целях защиты персональных<br>
+          данных результат теста, их<br>
+          подробная интерпретация и<br>
+          рекомендации доступны в виде<br>
+          голосового сообщения по звонку с<br>
+          вашего мобильного телефона
+        </h3>
+      </div>
+      <div class="main__timer">
+        <span class="main__timer-info">Звоните скорее, запись доступна всего</span>
+        <span class="main__timer-process">
+        {{ minutes < 10 ? `0${minutes}` : minutes }}{{ timerIndicators }}{{ seconds < 10 ? `0${seconds}` : seconds }}
         <span class="main__timer-minutes">  минут</span>
       </span>
-    </div>
-    <button class="main__call-button" @click="getData">
-      <img class="main__button-icon" :src="callIcon" alt="Call icon">
-      <span class="main__button-text">
+      </div>
+      <button class="main__call-button" @click="getData">
+        <img class="main__button-icon" :src="callIcon" alt="Call icon">
+        <span class="main__button-text">
         Позвонить и прослушать<br>
         результат
       </span>
-    </button>
-    <CalledResult :data="fetchedData" v-if="fetchedData"/>
-  </main>
-  <footer class="footer">
-    <span class="footer__text">TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU</span>
-    <span class="footer__text">DE DIVERTISMENT. PRIN FOLOSIREA LUI</span>
-    <span class="footer__text">DECLARATI CA AVETI 18 ANI IMPLINITI,</span>
-  </footer>
-</div>
+      </button>
+      <CalledResult :data="fetchedData" v-if="fetchedData" />
+    </main>
+    <footer class="footer">
+      <span class="footer__text">TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU</span>
+      <span class="footer__text">DE DIVERTISMENT. PRIN FOLOSIREA LUI</span>
+      <span class="footer__text">DECLARATI CA AVETI 18 ANI IMPLINITI,</span>
+    </footer>
+  </div>
 </template>
 
 <style scoped>

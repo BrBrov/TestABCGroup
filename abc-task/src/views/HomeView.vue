@@ -2,10 +2,15 @@
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import MainComponent from '@/components/MainComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import { inject, reactive } from 'vue';
+import MenuComponent from '@/components/MenuComponent.vue';
+
+const isShowMenu = reactive(inject('isShowMenu'));
 
 </script>
 
 <template>
+  <MenuComponent v-if="isShowMenu"/>
   <div class="wrapper">
     <HeaderComponent />
     <MainComponent />
@@ -15,9 +20,12 @@ import FooterComponent from '@/components/FooterComponent.vue';
 
 <style scoped>
 .wrapper {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   height: 100vh;
   margin: 0 auto;
+  top: 0;
 }
 </style>

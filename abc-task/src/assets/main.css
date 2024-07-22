@@ -1,13 +1,17 @@
 @import './fonts.css';
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --font-merriweather: "Merriweather";
   --font-pt-serif: "PT Serif";
   --font-yeseva-one: "Yeseva One";
   --font-roboto: "Roboto",;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  position: relative;
 }

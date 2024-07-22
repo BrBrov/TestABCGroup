@@ -2,18 +2,23 @@
 import menu from '@/assets/svg/menu.svg';
 import brainImage from '@/assets/webp/brain.webp';
 import { useRoute } from 'vue-router';
+import { inject } from 'vue';
 
 const route = useRoute();
+
+const isShowMenuSet = inject('isShowMenuSet');
 
 </script>
 
 <template>
   <div class="header__menu">
-    <button class="header__btn">
+    <button class="header__btn" @click="isShowMenuSet">
       <img class="header__menu-img" :src="menu" alt="Open menu">
     </button>
     <div class="header__brain" v-if="route.path !=='/'">
-      <img class="header__brain-img" :src="brainImage" alt="Brain logo">
+      <img class="header__brain-img"
+           :src="brainImage"
+           alt="Brain logo">
     </div>
     <h1 class="header__label" v-if="route.path !=='/' && route.path !=='/result'">
       тест на определение IQ

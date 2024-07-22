@@ -6,8 +6,9 @@ import ButtonComponent from '@/components/ButtonComponent.vue';
 import { testingState } from '@/pinia/testingState.js';
 import { testsStore } from '@/pinia/testsStore.js';
 import { useRoute, useRouter } from 'vue-router';
-import { computed, onMounted } from 'vue';
+import { computed, inject, onMounted, reactive } from 'vue';
 import GraphicalQuestComponent from '@/components/GraphicalQuestComponent.vue';
+import MenuComponent from '@/components/MenuComponent.vue';
 
 const { query, path } = useRoute();
 const { push } = useRouter();
@@ -20,6 +21,8 @@ const maxTest = computed(() => tests.getNumberOfTests());
 const isButtonEnabled = computed(() => {
   return !state.getCurrentAnswer();
 });
+
+const isShowMenu = reactive(inject('isShowMenu'));
 
 function nextTask() {
   if(maxTest.value === state.getAnswers().length) {
@@ -51,6 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <MenuComponent v-if="isShowMenu"/>
   <div class="wrapper">
     <header class="header">
       <HeaderMenuComponent/>
